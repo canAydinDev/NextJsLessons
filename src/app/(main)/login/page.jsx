@@ -10,6 +10,7 @@ const LoginPage = () => {
   return (
     <div>
       <PageHeader title="Login"/>
+      Login
     </div>
   )
 }
