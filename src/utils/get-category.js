@@ -1,8 +1,6 @@
 
-import { config } from '@/utils/config';
-import React from 'react'
 
-const GetCategories =async () => {
+export async function getCategoriesFromProducts() {
   
   const resp = await fetch(`${config.apiURL}/products`);
   const products = await resp.json();
@@ -18,17 +16,5 @@ const GetCategories =async () => {
       }
   });
 
-  return (
-    <>
-  {
-    categories.map((item,index)=> (
-      <option key={index} value={item}>{item}</option>
-      
-    ))
-  }
-</>
-
-  )
+  return categories;
 }
-
-export default GetCategories

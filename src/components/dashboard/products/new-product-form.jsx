@@ -17,6 +17,8 @@ const NewProductForm = () => {
   const {title, description, price, category, image} = state.errors;
 
   return (
+    <>
+    {state.errors.commonError ? (<div className='alert alert-danger'>{state.errors.commonError}</div>) : ("") }
     <Form action={dispatch} >
         
         <Form.Group className='mb-3'>
@@ -51,7 +53,11 @@ const NewProductForm = () => {
           <Form.Label>Category</Form.Label>
           <Form.Select name='category' isInvalid={!!category} >
             <option value="Select">Select</option>
-            <GetCategories/>
+            <option value="Health">Health</option>
+            <option value="Games">Games</option>
+            <option value="Toys">Toys</option>
+            <option value="Computers">Computers</option>
+            
           </Form.Select>
           <Form.Control.Feedback type='invalid'>{category}</Form.Control.Feedback>
         </Form.Group>
@@ -67,6 +73,8 @@ const NewProductForm = () => {
       <SubmitButton title="Create"/>
       <CancelButton/>
     </Form>
+    </>
+    
     
   )
 }

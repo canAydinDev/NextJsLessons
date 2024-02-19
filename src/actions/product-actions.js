@@ -56,6 +56,7 @@ export const createProductAction = async (prevState, formData) => {
   redirect("/dashboard/products")
 }
 
+
 export const updateProductAction = async (prevState, formData) => {
   const fields = convertFormDataToJson(formData);
 
@@ -63,7 +64,7 @@ export const updateProductAction = async (prevState, formData) => {
     FormSchema.validateSync(fields, {abortEarly: false});
 
     const resp = await fetch(`${config.apiURL}/products/${fields.id}`, {
-      method: 'put',
+      method: "put",
       body: JSON.stringify(fields),
       headers: {
         "Content-Type": "application/json"
@@ -91,9 +92,37 @@ export const updateProductAction = async (prevState, formData) => {
   revalidatePath("/dashboard/products")
   revalidatePath(`/dashboard/products/${fields.id}`)
 
-  redirect("dashboard/products")
+  redirect("/dashboard/products")
 }
 
 export const deleteProductAction = async(id) => {
+  try {
+    if(!id) throw new Error("id is missing");
+
+    const res = await fetch(`${config.apiURL}/products/${id}`,{
+      method: "delete",
+    })
+
+    if(!res.ok){
+      const data = await res.json();
+      throw new Error(data.message)
+    }
+  } catch (error) {
+    if(error instanceof Yup.ValidationError){
+      return getYupErrors(error.inner);
+    }
+    return {
+      message: "Something went wrong",
+      errors: {
+        commonError: error.message,
+      },
+    };
+  }
+  revalidatePath("/products")
+  
+  revalidatePath("/dashboard/products")
+  
+
+  redirect("/dashboard/products")
 
 }
