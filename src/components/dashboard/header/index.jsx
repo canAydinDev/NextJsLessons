@@ -11,7 +11,7 @@ const DashboardHeader = () => {
   const pathname = usePathname();
   
   return (
-    <Navbar expand={false} className='bg-danger mb-3' collapseOnSelect>
+    <Navbar expand={false} className='my-dashboard mb-3' collapseOnSelect>
       <Container>
         <Navbar.Brand href='#'>Product Manager</Navbar.Brand>
         <Navbar.Toggle aria-controls={`dashboardOffcanvas`} />
@@ -23,8 +23,8 @@ const DashboardHeader = () => {
           </Offcanvas.Header>
           <Offcanvas.Body>
             <Nav className='justify-content-end flex-grow-1 pe-3'>
-              {menuItems.map((item) => (
-                <Nav.Link key={item.id} href={item.url} as={Link}  active={pathname === item.url}>{item.title}</Nav.Link>
+              {menuItems.map((item, index) => (
+                <Nav.Link key={index} href={item.url} as={Link}  active={pathname === item.url}>{item.title}</Nav.Link>
               ))}
               
               

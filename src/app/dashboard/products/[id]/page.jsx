@@ -1,9 +1,16 @@
+import GetCategories from '@/components/common/methods/get-things'
+import EditProductForm from '@/components/dashboard/products/edit-product-form'
+import { config } from '@/utils/config'
 import React from 'react'
 
-const DashboardProductDetailsPage = () => {
-  
+const DashboardProductDetailsPage =async ({params}) => {
+  const resp = await fetch(`${config.apiURL}/products/${params.id}`)
+  const product =await resp.json();
   return (
-    <div>DashboardProductDetailsPage</div>
+    <div>
+      <EditProductForm product={product}/>
+      
+    </div>
   )
 }
 

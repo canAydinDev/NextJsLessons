@@ -5,12 +5,14 @@ const nextConfig = {
       {
         protocol: 'https',
         hostname: 'd4.alternativeto.net',
-        
       },
       {
         protocol: 'https',
         hostname: 'images.pexels.com',
-        
+      },
+      {
+        protocol: 'https',
+        hostname: 'loremflickr.com',
       },
     ],
   },

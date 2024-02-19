@@ -16,8 +16,8 @@ const Header = () => {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
-            {menuItems.map((item)=> (
-              <Nav.Link key={item.id} href={item.url} as={Link}>
+            {menuItems.map((item,index)=> (
+              <Nav.Link key={index} href={item.url} as={Link}>
                 {item.title}
               </Nav.Link> 
             ))}        
