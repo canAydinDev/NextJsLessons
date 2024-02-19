@@ -13,6 +13,7 @@ const ProductDetails = ({product}) => {
           height={500} 
           className='img-fluid' 
           style={{width: "100%"}}
+          alt="product image"
         />
       </Col>
       <Col md={6}>

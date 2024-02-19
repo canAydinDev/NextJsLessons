@@ -18,10 +18,11 @@ const ContactPage =  () => {
       <Image src="https://images.pexels.com/photos/20197333/pexels-photo-20197333/free-photo-of-a-man-in-cowboy-hat-riding-a-horse-in-a-field.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" 
       fill
       style={{objectFit: "cover"}}
+      alt="contact image"
       />
       </div>
 
-      <Image src={logo}/>
+      <Image src={logo} alt="contact image"/>
 
     </div>
   )
